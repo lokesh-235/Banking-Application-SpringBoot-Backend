@@ -1,10 +1,12 @@
 package com.example.bankApplication.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 
 @Entity
@@ -13,19 +15,25 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long accountNumber;
+	
 	private String accountType;
+	
 	private Float balance;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Customer customer;
+	
 	
 	public Account() {}
 	
-	public Account(Long accountNumber, String accountType, Float balance) {
-		// TODO Auto-generated constructor stub
+	public Account(Long accountNumber, String accountType, Float balance, Customer customer) {
+	
 		this.accountNumber = accountNumber;
 		this.accountType = accountType;
 		this.balance = balance;
+		this.customer = customer;
 	}
-	
-	
+
 	public Long getAccountNumber() {
 		// TODO Auto-generated method stub
 		return accountNumber;
@@ -39,6 +47,10 @@ public class Account {
 		return balance;
 	}
 	
+	public Customer getCustomer() {
+		return customer;
+	}
+	
 	public void setBalance(Float balance) {
 		this.balance = balance;
 	}
@@ -46,8 +58,10 @@ public class Account {
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
-	
-	
-	
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 	
 }

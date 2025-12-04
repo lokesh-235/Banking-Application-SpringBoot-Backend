@@ -2,7 +2,9 @@ package com.example.bankApplication.services;
 
 import java.util.List;
 
+
 import com.example.bankApplication.dto.AccountDto;
+import com.example.bankApplication.dto.CustomerDto;
 
 public interface AccountService {
 	
@@ -19,4 +21,6 @@ public interface AccountService {
 	void deleteAccount(Long accountNumber);
 	
 	List<AccountDto> getAccountsByAccountType(String accountType);
+	
+	
 }

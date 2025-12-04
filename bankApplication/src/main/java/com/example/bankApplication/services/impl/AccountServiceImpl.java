@@ -3,6 +3,7 @@ package com.example.bankApplication.services.impl;
 
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -10,7 +11,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.bankApplication.dto.AccountDto;
 import com.example.bankApplication.entities.Account;
+import com.example.bankApplication.entities.Customer;
 import com.example.bankApplication.mappers.AccountMapper;
+import com.example.bankApplication.mappers.CustomerMapper;
 import com.example.bankApplication.repositories.AccountRepository;
 import com.example.bankApplication.services.AccountService;
 
@@ -28,7 +31,9 @@ public class AccountServiceImpl implements AccountService{
 	@Override
 	public AccountDto createAccount(AccountDto accountDto) {
 		// TODO Auto-generated method stub
+		System.out.println(accountDto);
 		Account account = AccountMapper.mapToAccount(accountDto);
+		
 		Account savedAccount = accountRepository.save(account);
 		
 		return AccountMapper.mapToAccountDto(savedAccount);
