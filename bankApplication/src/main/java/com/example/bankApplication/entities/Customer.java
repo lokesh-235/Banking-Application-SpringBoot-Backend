@@ -2,6 +2,7 @@ package com.example.bankApplication.entities;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Customer {
 	private String address;
 	private String phoneNumber;
 	
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,orphanRemoval = true)
 	List<Account> accounts;
 	public Customer() {}
 	
@@ -28,6 +29,7 @@ public class Customer {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		
 	}
 	
 	
@@ -56,10 +58,19 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public List<Account> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "id = "+this.id+"\n"
-				+"name = "+this.name+"\n";
+				+"name = "+this.name+"\n"
+				+"accounts = "+this.accounts;
 	}
 }
