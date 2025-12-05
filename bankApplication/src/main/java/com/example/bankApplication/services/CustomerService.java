@@ -4,4 +4,6 @@ import com.example.bankApplication.dto.CustomerDto;
 
 public interface CustomerService {
 	CustomerDto getCustomerById(Integer id);
+	
+	CustomerDto addCustomer(CustomerDto customerDto);
 }

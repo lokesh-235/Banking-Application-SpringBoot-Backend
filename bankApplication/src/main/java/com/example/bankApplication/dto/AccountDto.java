@@ -7,15 +7,15 @@ public class AccountDto {
 	private Long accountNumber;
 	private String accountType;
 	private Float balance;
-	private CustomerDto customerDto;
+//	private CustomerDto customerDto;
 	
 	public AccountDto() {}
 	
-	public AccountDto(Long accountNumber,String accountType,Float balance,CustomerDto customerDto) {
+	public AccountDto(Long accountNumber,String accountType,Float balance) {
 		this.accountNumber = accountNumber;
 		this.accountType = accountType;
 		this.balance = balance;
-		this.customerDto = customerDto;
+//		this.customerDto = customerDto;
 	}
 	
 	public Long getAccountNumber() {
@@ -31,16 +31,25 @@ public class AccountDto {
 		return this.balance;
 	}
 	
-	public CustomerDto getCustomerDto() {
-		return this.customerDto;
-	}
 	
+	public void setAccountNumber(Long accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public void setAccountType(String accountType) {
+		this.accountType = accountType;
+	}
+
+	public void setBalance(Float balance) {
+		this.balance = balance;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "account Number = "+this.accountNumber+"\n"
 				+"account Type = "+this.accountType+"\n"
 				+"balance = "+this.balance+"\n"
-				+customerDto;
+				;
 	}
 }

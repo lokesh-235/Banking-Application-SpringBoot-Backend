@@ -31,6 +31,18 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return customerDto;
 	}
+
+	@Override
+	public CustomerDto addCustomer(CustomerDto customerDto) {
+		// TODO Auto-generated method stub
+		Customer customer =CustomerMapper.mapToCustomer(customerDto);
+		customer.getAccounts().forEach(account->account.setCustomer(customer));
+		Customer savedCustomer = customerRepository.save(customer);
+		System.out.println(savedCustomer);
+		
+		
+		return CustomerMapper.mapToCustomerDto(savedCustomer);
+	}
 	
 	
 	
