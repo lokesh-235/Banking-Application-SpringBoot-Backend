@@ -1,9 +1,12 @@
 package com.example.bankApplication.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Customer {
@@ -15,12 +18,12 @@ public class Customer {
 	private String address;
 	private String phoneNumber;
 	
-	
-	
+	@OneToMany(mappedBy = "customer")
+	List<Account> accounts;
 	public Customer() {}
 	
 	public Customer(Integer id, String name, String address, String phoneNumber) {
-		super();
+		
 		this.id = id;
 		this.name = name;
 		this.address = address;
